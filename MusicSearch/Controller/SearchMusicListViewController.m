@@ -48,10 +48,15 @@
 - (IBAction)searchMusic:(id)sender {
     [[self tableView] setHidden:YES];
 //    Show alert if the user has not entered any text
-    if ([[self txtSearchKey].text isEqualToString:@""]) {
+    
+    NSString *strSearchKey = [self txtSearchKey].text;
+    strSearchKey = [strSearchKey stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if ([strSearchKey isEqualToString:@""]) {
         [self showAlert:@"Please enter a valid string"];
+        [self txtSearchKey].text = @"";
     } else {
-        [self loadTableWithSearchKey:[self txtSearchKey].text];
+        [self loadTableWithSearchKey:strSearchKey];
     }
 }
 

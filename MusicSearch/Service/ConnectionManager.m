@@ -96,8 +96,7 @@
                 NSLog(@"Error Description %@", [error description]);
             }
             else {
-                NSData *dataDic = (NSData*)[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-//                retString = [NSString stringWith data;
+                retString = (NSString*)[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             }
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
